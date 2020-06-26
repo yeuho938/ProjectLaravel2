@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    .box{
+      width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <center>
+    <h1 style="color: red;"> CHỈNH SỬA SẢN PHẨM </h1>
+    <div class="box">
+      <form class="form" method="POST" action="{{'/admin/clothes/'.$array->id}}" enctype="multipart/form-data">
+       @csrf
+       @method("PATCH")
+       <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Tên sản phẩm</label>
+          <input type="text" class="form-control" id="inputEmail4" name ="name" value="{{$array -> name}}" placeholder="Tên sản phẩm">
+          @error('name')
+          <div class="alert alert-success">{{ $message }}</div>
+          @enderror
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Số lượng</label>
+          <input type="text" class="form-control" id="inputPassword4" name ="quantity"value="{{$array -> quantity}}" placeholder="Password">
+          @error('quantity')
+          <div class="alert alert-success">{{ $message }}</div>
+          @enderror
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="category" style="float: left; font-size: 18px;"> Chọn loại sản phẩm</label><br>
+        <select name="category" id="category" class="form-control" >
+         @foreach($categories as $category) 
+         <option value="{{$category->id}}"> {{$category->name}}</option>
+         @endforeach
+       </select>    
+       @error('category')
+       <div class="alert alert-success">{{ $message }}</div>
+       @enderror   
+     </div>
+     <div class="form-row">
+       <div class="form-group col-md-6">
+        <label for="inputPassword4">Giá</label>
+        <input type="text" class="form-control" id="inputPassword4" name ="price" value="{{$array -> price}}" placeholder="Password">
+        @error('price')
+        <div class="alert alert-success">{{ $message }}</div>
+        @enderror
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Giá cũ</label>
+        <input type="text" class="form-control" id="inputEmail4" name ="priceOld" value="{{$array -> oldPrice}}" placeholder="Giá cũ">
+      </div>  
+
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Mô tả</label>
+        <input type="text" class="form-control" id="inputEmail4" name="description" value="{{$array -> description}}" placeholder="Mô tả">
+        @error('description')
+        <div class="alert alert-success">{{ $message }}</div>
+        @enderror
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Hình ảnh</label>
+        <input type="file" class="form-control" id="inputPassword4" name="image" placeholder="Hình ảnh">
+        @error('image')
+        <div class="alert alert-success">{{ $message }}</div>
+        @enderror
+      </div>
+    </div>
+    <button type="submit" class="btn btn-default" style=" font-size: 18px; color:green ;"> Chỉnh sửa </button>
+  </form>
+</div>
+</center>
+</body>
+</html>
