@@ -14,10 +14,29 @@
     .box{
       width: 500px;
     }
+    #chudau{
+    margin-left: -50%;
+    }
+    #chudau a{
+      text-decoration: none;
+      color: black;
+      font-size: 17px;
+      margin-left: 0px;
+    }
+    #chudau a:hover{
+      color: #4E7EF8;
+
+    }
   </style>
 </head>
 <body>
+  <div>
+    @include('/partials/header')
+    @include('/partials/danhmuc')
+  </div>
   <center>
+    <span id ="chudau"><a href="/admin/clothes" >Quản lý sản phẩm</a> > <a href="/admin/clothes/create">Trang thêm sản phẩm</a></span><br>
+    <hr>
     <h1 style="color: red;"> THÊM SẢN PHẨM </h1>
     <div class="box">
       <form class="form" method="POST" action="/admin/clothes/insert" enctype="multipart/form-data">

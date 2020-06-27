@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\DB;
 use App\Product;
 use App\Cart;
 use App\Category;
+use App\User;
 class CartController extends Controller
 {
 	function indexCart(){
-
 
 		if(Auth::user())
 		{
@@ -32,6 +32,8 @@ class CartController extends Controller
 		}
 	}
 	function addCart($id) {
+		if(Auth::check()){
+			
 		$idUser = Auth::user()->id;
 
 		$check = DB::table('carts')
@@ -54,6 +56,10 @@ class CartController extends Controller
 			DB::table('carts')->insert(["product_id" => $id, "quantity" => 1, "user_id" => $idUser]);
 			return redirect()->route('home', ["carts" => "Thêm vào giỏ hàng Thành Công"]);
 		}
+		}
+		else{
+			return redirect("/auth/login");
+		}
 	}
 	function destroyCart($id){
 		$cart = Cart::find($id);
@@ -66,7 +72,6 @@ class CartController extends Controller
 		$quantity = $cart->quantity + 1;
 		$cart->quantity = $quantity;
 		$cart->save();
-		echo $quantity;
 		return redirect ('user/cartindex');
 	}
 	function creaseQuantity($id){
@@ -75,9 +80,16 @@ class CartController extends Controller
 		$quantity = $cart->quantity - 1;
 		$cart->quantity = $quantity;
 		$cart->save();
-		echo $quantity;
 		return redirect ('user/cartindex');
+	}
+	function indexPay(){
+		//$category = Category::all();
+        $id_user = Auth::user()->id;
+        $carts = Cart::where('user_id',$id_user)->get();
+		return view('user.payment',['carts'=>$carts]);
 	}
 }
 
 
+
+ 

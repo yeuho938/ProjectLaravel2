@@ -2,8 +2,7 @@
 -<?php
 
 use Illuminate\Support\Facades\Route;
-
-
+use Illuminate\Auth\Middleware\checkLogin;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,14 +21,14 @@ Route::post('/home/search', 'User\HomeController@search');
 
 
 // ADMIN
-Route::get('/admin/dashboard', 'Admin\DashboardController@index')->name("admin.dashboard");
+Route::get('/admin/dashboard', 'Admin\DashboardController@index')->name("admin.dashboard")->middleware('checkLogin');
 
 Route::get('/admin/users', 'Admin\UserController@index');
 //Route::post('/admin/users/insert', 'Admin\UserController@store');
 Route::delete('/admin/users/{id}', 'Admin\UserController@destroy');
 
 // UERS
-Route::get('/home', 'User\HomeController@index')->name("home");
+Route::get('/home/user', 'User\HomeController@index')->name("home");
 Route::get('/user/{id}/detail', 'User\HomeController@detail');
 
 //CART
@@ -38,6 +37,9 @@ Route::get('/user/{id}/cart', 'User\CartController@addCart');
 Route::delete('/user/cartindex/{id}','User\CartController@destroyCart');
 Route::get('/user/cartindex/{id}/increase',"User\CartController@increaseQuantity");
 Route::get('/user/cartindex/{id}/crease',"User\CartController@creaseQuantity");
+
+Route::get('/user/payment',"User\CartController@indexPay");
+
 
 // PRODUCT
 	Route::get('/admin/clothes/create', 'Admin\ClothesController@create');

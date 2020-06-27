@@ -6,15 +6,25 @@
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <style type="text/css">
+    #chudau{
+      display: flex;
+      height: 50px;
+      
+    }
+  </style>
 </head>
-
 <body>
   <div>
     @include('/partials/header')
     @include('/partials/danhmuc')
   </div>
-  <center><h2> DANH SÁCH SẢN PHẨM</h2></center>
-  <div class="container">
+  
+  <center><h2> DANH SÁCH SẢN PHẨM</h2>
+    <a href="/admin/clothes/create" class = "btn btn-success"> Thêm sản phẩm</a>
+    <a href="/category/create" class = "btn btn-success"> Thêm loại sản phẩm</a>
+  </center>
+  <div class="container" style="margin-top: 1%;">
     <div class ="row">
       <table class=" table-bordered table-dark" width="1400px" style="margin-left: -80%">
         <thead>

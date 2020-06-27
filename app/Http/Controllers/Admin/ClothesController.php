@@ -18,7 +18,6 @@ class ClothesController extends Controller
 		$categories = Category::all();
 		return view('partials.header',['categories'=>$categories]);
 	}
-
 	
 	function index(){
 		$categories = Category::all();

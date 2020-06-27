@@ -8,14 +8,41 @@
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
+	<div>
+    @include('/partials/header')
+    @include('/partials/danhmuc')
+	</div>
 	<h3> List of Category</h3>
+	<div id="main">
+		<div class="container">
+			<h1 class="title-page">Xác định vị trí và các thành phần liên quan trong Tabs</h1>
+			<div class="group-tabs">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+					<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+					<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+					<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="home">This is Home content</div>
+					<div role="tabpanel" class="tab-pane" id="profile">This is Profile content</div>
+					<div role="tabpanel" class="tab-pane" id="messages">This is Messages content</div>
+					<div role="tabpanel" class="tab-pane" id="settings">This is Settings content</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="container">
 		<div class ="row">
 			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th scope="col">STT</th>
-						<th scope="col">Name Category</th>	
+						<th scope="col">Name Category</th>
+						<th scope="col">Insert</th>	
 						<th scope="col">Delete</th>	
 						<th scope="col">Edit</th>						
 					</tr>
@@ -24,7 +51,10 @@
 				<tbody>
 					<tr>
 						<th scope="row"> {{$category->id}}</th>
-						<td>{{$category->name}}</td>						
+						<td>{{$category->name}}</td>
+						<td>
+							<a href='/category/create'> Edit</a>
+						</td>						
 						<td>
 							<form action='{{"/category/".$category->id}}' method ="POST">
 								@csrf 

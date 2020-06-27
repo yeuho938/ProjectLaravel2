@@ -17,15 +17,19 @@
   </style>
 </head>
 <body>
+  <div>
+    @include('/partials/header')
+    @include('/partials/danhmuc')
+  </div>
   <center>
     <h1 style="color: red;"> Thêm loại sản phẩm</h1>
     <div class="box">
       <form class="form" method="POST" action="/category/store" enctype="multipart/form-data">
        @csrf
        <div class="form-group">
-        <label for="category" style="float: left; font-size: 18px;"> Tên loại sản phẩm</label>
-        <input type="text" class="form-control" name = "category" placeholder="category"> 
-        @error('category')
+        <label for="categ" style="float: left; font-size: 18px;"> Tên loại sản phẩm</label>
+        <input type="text" class="form-control" name ="name" placeholder="category"> 
+        @error('name')
         <div class="alert alert-success">{{ $message }}</div>
         @enderror              
       </div>

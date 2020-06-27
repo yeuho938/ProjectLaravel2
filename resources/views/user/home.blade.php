@@ -2,9 +2,8 @@
 <html>
 <head>
 	<title>	</title>
-	<link rel="stylesheet" type="text/css" href="css/home.css">
-  <link rel="stylesheet" type="text/css" href="css/homedm.css">
-
+	<link rel="stylesheet" type="text/css" href="/css/home.css">
+  <link rel="stylesheet" type="text/css" href="/css/homedm.css">
   <style type="text/css">
     #detail, #cart,#tim{
       color: orange
@@ -23,16 +22,16 @@
     </ol>
     <div class="carousel-inner" >
       <div class="item active">
-        <img src="https://i.ytimg.com/vi/KRfajXP6odg/maxresdefault.jpg" alt="" style="height: 800px; width: 100%;">
+        <img src="/image/anh0.jfif" alt="" style="height: 700px; width: 100%;">
       </div>              
       <div class="item">
-        <img src="https://i.ytimg.com/vi/88FgYW43y2M/maxresdefault.jpg" alt="" style="height: 800px; width: 100%;">
+        <img src="/image/anh3.jpg" alt="" style="height: 700px; width: 100%;">
       </div>
       <div class="item">
-        <img src="https://i.ytimg.com/vi/dO8aDqJh1SQ/maxresdefault.jpg" alt="" style="height: 800px; width: 100% ">
+        <img src="/image/anh1.jpg" alt="" style="height: 700px; width: 100% ">
       </div>
       <div class="item">
-        <img src="https://i.ytimg.com/vi/C1xarrbf8fo/maxresdefault.jpg" alt="" style="height: 800px; width: 100%">
+        <img src="/image/anh2.jpg" alt="" style="height: 700px; width: 100%">
       </div>
     </div>
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -46,7 +45,7 @@
   </div>
 </div>
 <hr>
-<div class="container-fluid" id="menungang" >
+<!-- <div class="container-fluid" id="menungang" >
   <div class="row" >
     <div class="col-sm-3">
       <a class="list" href="Home/hoasinhnhat.php"><img src="https://cf.shopee.vn/file/705d72882bedf48214821d72918d507e" class="img-rounded" alt="Cinque Terre" title="" width="304" height="236" ></a>
@@ -62,8 +61,8 @@
     </div>
   </div>
 </div>
-<hr>
-<h2 style="color: red; margin-left: 30%;"> TẤT CẢ SẢN PHẨM</h2>
+<hr> -->
+<span style="display: flex;"><h2 style="color: red; margin-left: 30%;"> TẤT CẢ SẢN PHẨM</h2>  <h3 style=" margin-left: 40%;"> Sắp xếp theo</h3></span>
 <div class="container" style="display: flex;">
   <div class="row" style="float: left;width: 30%; margin-left: -20%;padding:20px;margin-top: -20px">
     <div class="btrix_blockmenu">
@@ -73,7 +72,7 @@
         <li><a href="#">{{$cate->name}}</a></li>
         @endforeach 
         <li style="border: 1px solid grey"><a href="#">Sản phẩm mới</a>
-          <img src="image/somi.jpg">
+          <img src="/image/somi.jpg">
 
         </li>
       </ul>
@@ -84,6 +83,15 @@
       @foreach($clothesdata as $clothes)
       <div class="product-grid6">
         <div class="product-image6">
+          <p style="border-radius:60%;position: absolute;height: 45px;width: 45px;margin-left: -50%;" class = "btn btn-danger"> 
+            <?php  
+            $giamgia = 0;
+            if($clothes->getDisplayPriceOld() > 0){
+              $giamgia = 100-($clothes->price*100)/$clothes->oldPrice;
+            }
+            echo round($giamgia, 0, PHP_ROUND_HALF_UP)."%";
+            ?>
+          </p>
           <a href="#">
             <img class="pic-1" src="{{'/storage/'.$clothes->image}}" width="250px" height="250px">
           </a>
@@ -117,14 +125,12 @@
 
     </div>
   </div>
-  <div>
-  </div>
-
 </div>
+
 <div class="container-fluid">
   <center>
-    <a class="btn btn-danger" href="home/?page={{$page-1}}">Previous</a>
-    <a class="btn btn-danger" href="home/?page={{$page+1}}">Next</a>
+    <a class="btn btn-danger" href="/home/user/?page={{$page-1}}">Previous</a>
+    <a class="btn btn-danger" href="/home/user/?page={{$page+1}}">Next</a>
   </center>
   
 </div>

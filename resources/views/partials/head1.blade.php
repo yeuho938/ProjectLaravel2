@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,9 +105,9 @@
 				<nav class="navbar navbar-inverse" style="background-color: #CDC9C9">
 					<ul class="nav navbar-nav" id="menu">
 						
-						<li class="dropdown"><a href="/home" id="tc"> TRANG CHỦ </a>
+						<li class="dropdown"><a href="/home/user" id="tc"> TRANG CHỦ </a>
 						</li>
-						<li class="dropdown"><a href="Home/gioithieu.php"> GIỚI THIỆU</a>
+						<li class="dropdown"><a href="#"> GIỚI THIỆU</a>
 						</li>
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="sp"> SẢN PHẨM<span class="caret"></span></a>
 							<ul class="dropdown-menu">

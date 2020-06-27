@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +8,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" >
 	<style type="text/css">
 		#input{
-			width: 350px;
+			width: 550px;
 			height: 44px;
 		}
 		#menu{
@@ -66,10 +64,8 @@
 				<i id="phone" class="fas fa-phone-volume"></i> <span class="chu" >Hotline: 035 446 7064</span>
 				<i id="email" class="fas fa-envelope"></i> <span class="chu" >Email: hothiyeu012345@gmail.com</span>	
 			</div>
-			<div class="col-sm-1"  >
-				
-			</div>
-			<div class="col-sm-6" style="padding-top: 20px">
+	
+			<div class="col-sm-7" style="padding-top: 20px">
 				<span style="display: inline-flex;">
 					<form class="navbar-form navbar-left" action="/home/search" method="post">
 						@csrf 
@@ -108,14 +104,16 @@
 				<nav class="navbar navbar-inverse" style="background-color: #CDC9C9">
 					<ul class="nav navbar-nav" id="menu">
 						
-						<li class="dropdown"><a href="/home" id="tc"> TRANG CHỦ </a>
+						<li class="dropdown"><a href="/home/user" id="tc"> TRANG CHỦ </a>
 						</li>
 						<li class="dropdown"><a href="Home/gioithieu.php"> GIỚI THIỆU</a>
 						</li>
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="sp"> SẢN PHẨM<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								@foreach($categories as $cate)
-								<li><a href="#">{{$cate->name}}</a></li>
+
+								<li><a href="#">{{ $cate->name }}</a></li>
+
 								@endforeach						
 							</ul>
 						</li>

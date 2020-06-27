@@ -12,19 +12,20 @@ class CategoryController extends Controller
 		return view('admin.categories.index',['categories'=>$category]);
 	}
 	function create(){
-		return view('admin.categories.create');
+		$category = Category::all();
+		return view('admin.categories.create',['categories'=>$category]);
 	}
 	function store(Request $request){
-		$category = $request->category;
+		$category = $request->name ;
 
 		$request->validate([   	
-			'name'=> 'required|unique:categories'
+			'name'=> 'required|unique:categories',
 		]);
 		$cate = new Category();
 		$cate->name =$category;
 		$cate->save();
 
-		// return redirect('/category/index');
+		 return redirect('/category/index');
 
 	}
 	function destroy($id){

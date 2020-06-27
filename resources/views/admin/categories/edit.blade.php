@@ -17,6 +17,10 @@
   </style>
 </head>
 <body>
+  <div>
+    @include('/partials/header')
+    @include('/partials/danhmuc')
+  </div>
   <center>
     <h1 style="color: red;"> Cập nhật loại sản phẩm</h1>
     <div class="box">

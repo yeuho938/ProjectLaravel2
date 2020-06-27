@@ -24,7 +24,7 @@
 </head>
 <body>
 	@include('partials\header')
-	<span id ="chudau"><a href="/home" >Trang chủ</a> > <a href="/user/cartindex">Trang giỏ hàng</a></span><br>
+	<span id ="chudau"><a href="/home/user" >Trang chủ</a> > <a href="/user/cartindex">Trang giỏ hàng</a></span><br>
 	<hr>
 	<button class = "btn btn-danger" id="giohang">Giỏ hàng của bạn</button>
 	<div class="container-fluid" style="margin-left: 15%;">
@@ -106,18 +106,7 @@
 								</strong></h5>
 							</td>
 						</tr>
-						<tr>
-							<td>   </td>
-							<td>   </td>
-							<td>   </td>
-							<td>
-								<h5>Phí vận chuyển</h5>
-							</td>
-							<td class="text-right">
-								<h5><strong><?php $phi = 10000;
-								echo $phi;?></strong></h5>
-							</td>
-						</tr>
+						
 						<tr>
 							<td>   </td>
 							<td>   </td>
@@ -126,7 +115,7 @@
 								<h3>Tổng cộng</h3>
 							</td>
 							<td class="text-right">
-								<h3><strong> <?php echo $total+$phi ?></strong></h3>
+								<h3><strong> <?php echo $total ?></strong></h3>
 							</td>
 						</tr>
 						<tr>
@@ -134,16 +123,18 @@
 							<td>   </td>
 							<td>   </td>
 							<td>
-								<form action="/home" method="GET">
+								<form action="/home/user" method="GET">
 									<button type="submit" class="btn btn-success">
 										<span class="glyphicon glyphicon-shopping-cart"></span> Tiếp tục mua hàng
 									</button>
 								</form>
 							</td>
 							<td>
-								<button type="button" class="btn btn-success">
-									Thanh toán <span class="glyphicon glyphicon-play"></span>
-								</button>
+								<form action="/user/payment" method="GET">
+									<button type="submit" class="btn btn-success">
+										Thanh toán <span class="glyphicon glyphicon-play"></span>
+									</button>
+								</form>
 							</td>
 						</tr>
 

@@ -37,12 +37,12 @@
 					<div class="product-content">
 						<h3 class="title"><a href="#">{{ $search->name}}</a></h3>
 						<div class="price">{{ $search->price}}
-							<span>{{ $search->priceOld}}</span>
+							<span>{{ $search->oldPrice}}</span>
 						</div>
 					</div>
 					<ul class="social">
 						<li>
-							<form action='{{ "/admin/clothes/".$search ->id."/detail"}}' method="GET">
+							<form action='{{ "/user/".$search ->id."/detail"}}' method="GET">
 								<button  class="icon"><i class="fa fa-search"></i></button>
 							</form>  
 						</li>
@@ -52,7 +52,7 @@
 							</form> 
 						</li>
 						<li>
-							<form action='{{ "/admin/clothes/".$search ->id."/cart"}}' method="GET">
+							<form action='{{ "/user/".$search ->id."/cart"}}' method="GET">
 								<button data-tip="Add to Cart" class="icon"><i class="fa fa-shopping-cart"></i></button>
 							</form>
 						</li>

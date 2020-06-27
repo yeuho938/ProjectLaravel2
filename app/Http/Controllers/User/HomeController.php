@@ -26,16 +26,16 @@ class HomeController extends Controller
  {
   $category= Category::all();
   $page = $request->page;
-  $product = Product::all()->skip($page * 5)->take(12);
+  $product = Product::all()->skip($page * 5)->take(5);
   if($product->isEmpty())
   { 
-    $photos = Product::all()->take(12);
-    return redirect('home/?page=0');
+    $photos = Product::all()->take(5);
+    return redirect('/home/user/?page=0');
   }
   else if($page < 0)
   {
     $totalPage = round(count(Product::all())/5)-1;
-    return redirect('home/?page='.$totalPage);
+    return redirect('/home/user/?page='.$totalPage);
   }
   return view("user/home", [ "clothesdata" => $product,"categories"=>$category,"page" => $page]);
 }
@@ -44,7 +44,8 @@ function search(Request $request)
 {  
  $category= Category::all();
  $txt = $request->input('txtSearch');
- $search = DB::table('products')->where('name','LIKE','%'.$txt.'%')->get();
+ $search = DB::table('products')
+ ->where('name','LIKE','%'.$txt.'%')->get();
  return view('user.search',['research'=>$search,'categories'=>$category]);
 }
 

@@ -10,18 +10,19 @@ class CheckLoginRole
     {
       if(!Auth::check())
       {
-         echo "Chưa đăng nhập vào trang web";
-         return redirect('home');
-     } 
-     $user = Auth::user();
-     if($user->role !=1)
-     {
-        return redirect("home");
-    }
-    if($user->role ==1)
-    {
-        return redirect("/admin/dashboard");
-    }
+       echo "Chưa đăng nhập vào trang web";
+       return redirect('home');
+   } 
+   $user = Auth::user();
+   if($user->role !=1)
+   {
+    return redirect("home");
+}
+if($user->role ==1)
+{
+    return redirect("/admin/dashboard");
 }
 return $next($request);
+
+}
 }
