@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 namespace App\Http\Controllers\Admin;
 
@@ -33,14 +33,14 @@ class ClothesController extends Controller
 		$description = $request->description;
 		$file = $request->file("image")->store("public");
 
-		// $request->validate([   	
-		// 	'name'=> 'required|max:255',
-		// 	'price'=>'required',
-		// 	'category_id'=>'required',
-		// 	'description'=>'required',
-		// 	'image'=>'required',
-		// 	'quantity'=>'required',
-		// ]);
+		$request->validate([   	
+			'name'=> 'required|max:255',
+			'price'=>'required',
+			'category_id'=>'required',
+			'description'=>'required',
+			'image'=>'required',
+			'quantity'=>'required',
+		]);
 		$product = new Product();
 		$product->name=$name;
 		$product->image=$file;

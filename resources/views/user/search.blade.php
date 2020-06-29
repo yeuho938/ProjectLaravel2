@@ -30,6 +30,15 @@
 
 				<div class="product-grid6">
 					<div class="product-image6">
+						<p style="border-radius:60%;position: absolute;height: 45px;width: 45px;margin-left: -50%;" class = "btn btn-danger"> 
+							<?php  
+							$giamgia = 0;
+							if($search->getDisplayPriceOld() > 0){
+								$giamgia = 100-($search->price*100)/$search->oldPrice;
+							}
+							echo round($giamgia, 0, PHP_ROUND_HALF_UP)."%";
+							?>
+						</p>
 						<a href="#">
 							<img class="pic-1" src="{{ '/storage/'.$search->image}}" width="250px" height="250px">
 						</a>

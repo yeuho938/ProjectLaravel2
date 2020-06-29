@@ -47,7 +47,7 @@
 						</li>
 						<li>
 							<a href="#">
-								<form action="/admin/clothes" method="GET">
+								<form action="/admin/order" method="GET">
 									<i class="fas fa-cart-plus"></i> 
 									<button>Quản lý đơn đặt hàng</button>
 								</form>

@@ -15,11 +15,20 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
          $table->id();
-         $table->integer('tatol');
-         $table->string('status');
          $table->unsignedBigInteger('user_id');
-         $table->foreign('user_id')->references('id')->on('users');
+         $table->unsignedBigInteger('product_id');
+         $table->string('name');
+         $table->string('phone');
+         $table->string('email');
+         $table->string('address');
+         $table->string('code');
+         $table->float('percent');
+         $table->bigInteger('total');
+         $table->string('note');
+         $table->string('status');
          $table->timestamps();
+         $table->foreign('user_id')->references('id')->on('users');
+         $table->foreign('product_id')->references('id')->on('products');
      });
     }
 

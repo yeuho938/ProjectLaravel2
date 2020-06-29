@@ -26,14 +26,14 @@
     <form class="form" method="POST" action="/auth/register" enctype="multipart/form-data">
      @csrf
      <div class="form-group">
-      <label for="password" style="float: left; font-size: 18px;"> Full Name</label>
+      <label for="fullname" style="float: left; font-size: 18px;"> Full Name</label>
       <input type="text" class="form-control" name = "fullname" placeholder="name">
       @error('fullname')
       <div class="alert alert-success">{{ $message }}</div>
       @enderror
     </div>
     <div class="form-group">
-      <label for="name" style="float: left; font-size: 18px;"> Username</label>
+      <label for="username" style="float: left; font-size: 18px;"> Username</label>
       <input type="text" class="form-control" name = "username" placeholder="username">
       @error('username')
       <div class="alert alert-success">{{ $message }}</div>
@@ -48,21 +48,21 @@
     </div>
     
     <div class="form-group">
-      <label for="name" style="float: left; font-size: 18px;"> Email</label>
+      <label for="email" style="float: left; font-size: 18px;"> Email</label>
       <input type="text" class="form-control" name = "email" placeholder="Email">
       @error('email')
       <div class="alert alert-success">{{ $message }}</div>
       @enderror
     </div>
     <div class="form-group">
-      <label for="name" style="float: left; font-size: 18px;"> Address</label>
+      <label for="address" style="float: left; font-size: 18px;"> Address</label>
       <input type="text" class="form-control" name = "address" placeholder="Address">
       @error('address')
       <div class="alert alert-success">{{ $message }}</div>
       @enderror
     </div>
     <div class="form-group">
-      <label for="name" style="float: left; font-size: 18px;"> Phone</label>
+      <label for="phone" style="float: left; font-size: 18px;"> Phone</label>
       <input type="text" class="form-control" name = "phone" placeholder="Phone">
       @error('phone')
       <div class="alert alert-success">{{ $message }}</div>

@@ -44,14 +44,14 @@
        @method("PATCH")
        <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputEmail4">Tên sản phẩm</label>
+          <label for="name">Tên sản phẩm</label>
           <input type="text" class="form-control" id="inputEmail4" name ="name" value="{{$array -> name}}" placeholder="Tên sản phẩm">
           @error('name')
           <div class="alert alert-success">{{ $message }}</div>
           @enderror
         </div>
         <div class="form-group col-md-6">
-          <label for="inputPassword4">Số lượng</label>
+          <label for="quantity">Số lượng</label>
           <input type="text" class="form-control" id="inputPassword4" name ="quantity"value="{{$array -> quantity}}" placeholder="Password">
           @error('quantity')
           <div class="alert alert-success">{{ $message }}</div>
@@ -59,19 +59,19 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="category" style="float: left; font-size: 18px;"> Chọn loại sản phẩm</label><br>
-        <select name="category" id="category" class="form-control" >
+        <label for="name" style="float: left; font-size: 18px;"> Chọn loại sản phẩm</label><br>
+        <select name="name" id="category" class="form-control" >
          @foreach($categories as $category) 
          <option value="{{$category->id}}"> {{$category->name}}</option>
          @endforeach
        </select>    
-       @error('category')
+       @error('name')
        <div class="alert alert-success">{{ $message }}</div>
        @enderror   
      </div>
      <div class="form-row">
        <div class="form-group col-md-6">
-        <label for="inputPassword4">Giá</label>
+        <label for="price">Giá</label>
         <input type="text" class="form-control" id="inputPassword4" name ="price" value="{{$array -> price}}" placeholder="Password">
         @error('price')
         <div class="alert alert-success">{{ $message }}</div>
@@ -85,14 +85,14 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="inputEmail4">Mô tả</label>
+        <label for="description">Mô tả</label>
         <input type="text" class="form-control" id="inputEmail4" name="description" value="{{$array -> description}}" placeholder="Mô tả">
         @error('description')
         <div class="alert alert-success">{{ $message }}</div>
         @enderror
       </div>
       <div class="form-group col-md-6">
-        <label for="inputPassword4">Hình ảnh</label>
+        <label for="image">Hình ảnh</label>
         <input type="file" class="form-control" id="inputPassword4" name="image" placeholder="Hình ảnh">
         @error('image')
         <div class="alert alert-success">{{ $message }}</div>

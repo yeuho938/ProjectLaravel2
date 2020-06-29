@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User; 
+use App\Category;
 class UserController extends Controller
 {
 
 	function index(){
+		$cate = Category::all();
 		$users = User::all();
-		return view("admin.users.index", [ "userdata" => $users]);
+		return view("admin.users.index", [ "userdata" => $users,"categories"=>$cate]);
 	}
 	function store(Request $request){
 		$name = $request->input("fullname");

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\User;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -82,12 +81,7 @@ class CartController extends Controller
 		$cart->save();
 		return redirect ('user/cartindex');
 	}
-	function indexPay(){
-		//$category = Category::all();
-        $id_user = Auth::user()->id;
-        $carts = Cart::where('user_id',$id_user)->get();
-		return view('user.payment',['carts'=>$carts]);
-	}
+	
 }
 
 

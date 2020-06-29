@@ -25,6 +25,9 @@
          @csrf
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Username" name="username" required autofocus />
+           @error('username')
+          <div class="alert alert-success">{{ $message }}</div>
+          @enderror
         </div>
         <div class="form-group">
           <input type="password" class="form-control" placeholder="Password" name="password" required />

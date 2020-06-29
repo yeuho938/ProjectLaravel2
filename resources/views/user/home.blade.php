@@ -45,23 +45,6 @@
   </div>
 </div>
 <hr>
-<!-- <div class="container-fluid" id="menungang" >
-  <div class="row" >
-    <div class="col-sm-3">
-      <a class="list" href="Home/hoasinhnhat.php"><img src="https://cf.shopee.vn/file/705d72882bedf48214821d72918d507e" class="img-rounded" alt="Cinque Terre" title="" width="304" height="236" ></a>
-    </div>
-    <div class="col-sm-3">
-      <a class="list" href="Home/hoasukien.php"><img src="https://file.hstatic.net/1000138641/file/bo_trang.png" class="img-rounded" alt="Cinque Terre" title="" width="304" height="236"></a>
-    </div>
-    <div class="col-sm-3">
-      <a class="list" href="Home/hoakhaitruong.php"><img src="https://www.noithathoami.com/wp-content/uploads/2019/09/4-1.jpg" class="img-rounded" title="" alt="Cinque Terre" width="304" height="236"></a>
-    </div>
-    <div class="col-sm-3">
-      <a  class="list" href="Home/hoacuoi.php"><img src="https://ae01.alicdn.com/kf/HTB1K.LpUSzqK1RjSZPcq6zTepXa0/Trung-Qu-c-C-i-Hanfu-Trang-Ph-c-cho-Ph-N-Ph-ng-ng-H.jpg_q50.jpg" class="img-rounded" alt="Cinque Terre" title="" width="304" height="236"></a>
-    </div>
-  </div>
-</div>
-<hr> -->
 <span style="display: flex;"><h2 style="color: red; margin-left: 30%;"> TẤT CẢ SẢN PHẨM</h2>  <h3 style=" margin-left: 40%;"> Sắp xếp theo</h3></span>
 <div class="container" style="display: flex;">
   <div class="row" style="float: left;width: 30%; margin-left: -20%;padding:20px;margin-top: -20px">
@@ -69,7 +52,7 @@
       <ul>
         <li><a href="#">DANH MỤC SẢN PHẨM</a></li>
         @foreach($categories as $cate)
-        <li><a href="#">{{$cate->name}}</a></li>
+        <li><a href="/home/productOfCate/{{$cate->id}}">{{$cate->name}}</a></li>
         @endforeach 
         <li style="border: 1px solid grey"><a href="#">Sản phẩm mới</a>
           <img src="/image/somi.jpg">
@@ -82,49 +65,49 @@
     <div id="display">
       @foreach($clothesdata as $clothes)
       <div class="product-grid6">
-        <div class="product-image6">
-          <p style="border-radius:60%;position: absolute;height: 45px;width: 45px;margin-left: -50%;" class = "btn btn-danger"> 
-            <?php  
-            $giamgia = 0;
-            if($clothes->getDisplayPriceOld() > 0){
-              $giamgia = 100-($clothes->price*100)/$clothes->oldPrice;
-            }
-            echo round($giamgia, 0, PHP_ROUND_HALF_UP)."%";
-            ?>
-          </p>
-          <a href="#">
-            <img class="pic-1" src="{{'/storage/'.$clothes->image}}" width="250px" height="250px">
-          </a>
-        </div>
-        <div class="product-content">
-          <h3 class="title"><a href="#">{{ $clothes->name}}</a></h3>
-          <div class="price">{{ $clothes->getDisplayPrice()}}
-            <span>{{ $clothes->getDisplayPriceOld()}}</span>
-          </div>
-        </div>
-        <ul class="social">
-          <li>
-            <form action='{{ "/user/".$clothes ->id."/detail"}}' method="GET">
-              <button  class="icon"><i class="fa fa-search" id="detail"></i></button>
-            </form>  
-          </li>
-          <li>
-            <form action="/home/logout" method="GET">
-              <button data-tip="Add to Wishlist" class="icon"><i class="fa fa-shopping-bag" id="tim"></i></button>
-            </form> 
-          </li>
-          <li>
-            <form action='{{ "/user/".$clothes ->id."/cart"}}' method="GET">
-              <button data-tip="Add to Cart" class="icon"><i class="fa fa-shopping-cart" id="cart"></i></button>
-            </form>
-          </li>
-        </ul>
-
+        <div class="product-image6" >
+         <p style="border-radius:60%;position: absolute;height: 45px;width: 45px;margin-left: -50%;" class = "btn btn-danger"> 
+          <?php  
+          $giamgia = 0;
+          if($clothes->getDisplayPriceOld() > 0){
+            $giamgia = 100-($clothes->price*100)/$clothes->oldPrice;
+          }
+          echo round($giamgia, 0, PHP_ROUND_HALF_UP)."%";
+          ?>
+        </p>
+        <a href="#">
+          <img class="pic-1" src="{{'/storage/'.$clothes->image}}" width="250px" height="250px">
+        </a>
       </div>
-      @endforeach
+      <div class="product-content">
+        <h3 class="title"><a href="#">{{ $clothes->name}}</a></h3>
+        <div class="price">{{ $clothes->getDisplayPrice()}}
+          <span>{{ $clothes->getDisplayPriceOld()}}</span>
+        </div>
+      </div>
+      <ul class="social">
+        <li>
+          <form action='{{ "/user/".$clothes ->id."/detail"}}' method="GET">
+            <button  class="icon"><i class="fa fa-search" id="detail"></i></button>
+          </form>  
+        </li>
+        <li>
+          <form action="/home/logout" method="GET">
+            <button data-tip="Add to Wishlist" class="icon"><i class="fa fa-shopping-bag" id="tim"></i></button>
+          </form> 
+        </li>
+        <li>
+          <form action='{{ "/user/".$clothes ->id."/cart"}}' method="GET">
+            <button data-tip="Add to Cart" class="icon"><i class="fa fa-shopping-cart" id="cart"></i></button>
+          </form>
+        </li>
+      </ul>
 
     </div>
+    @endforeach
+
   </div>
+</div>
 </div>
 
 <div class="container-fluid">

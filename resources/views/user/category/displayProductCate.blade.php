@@ -13,8 +13,8 @@
 </head>
 <body>
  @include('partials\header')
-<hr>
-<div class="container-fluid" id="menungang" >
+ <hr>
+ <div class="container-fluid" id="menungang" >
   <div class="row" >
     <div class="col-sm-3">
       <a class="list" href="Home/hoasinhnhat.php"><img src="https://cf.shopee.vn/file/705d72882bedf48214821d72918d507e" class="img-rounded" alt="Cinque Terre" title="" width="304" height="236" ></a>
@@ -37,33 +37,39 @@
     <div class="btrix_blockmenu">
       <ul>
         <li><a href="#">DANH MỤC SẢN PHẨM</a></li>
-        <li><a href="#">Váy </a></li>
-        <li><a href="#">Áo sơ mi</a></li>
-        <li><a href="#">Quần đui</a></li>
-        <li><a href="#">Áo phồng</a></li>
-        <li><a href="http://www.buivansum.name.vn/">Quần dài</a></li>
+        @foreach($categories as $cate)
+        <li><a href="/home/productOfCate/{{$cate->id}}">{{$cate->name}}</a></li>
+        @endforeach 
       </ul>
     </div>
   </div>
   <div class="row" style="float: right; margin-left: 35%;">
     <div id="display">
-      @foreach($aokhoacs as $aokhoac)
-      @if($aokhoac->category_id==3)
+      @foreach($productcategory as $procate)
       <div class="product-grid6">
         <div class="product-image6">
+          <p style="border-radius:60%;position: absolute;height: 45px;width: 45px;margin-left: -50%;" class = "btn btn-danger"> 
+              <?php  
+              $giamgia = 0;
+              if($procate->price > 0){
+                $giamgia = 100-($procate->price*100)/$procate->oldPrice;
+              }
+              echo round($giamgia, 0, PHP_ROUND_HALF_UP)."%";
+              ?>
+            </p>
           <a href="#">
-            <img class="pic-1" src="{{ '/storage/'.$aokhoac->image}}" width="250px" height="250px">
+            <img class="pic-1" src="{{'/storage/'.$procate->image}}" width="250px" height="250px">
           </a>
         </div>
         <div class="product-content">
-          <h3 class="title"><a href="#">{{ $aokhoac->name}}</a></h3>
-          <div class="price">{{ $aokhoac->getDisplayPrice()}}
-            <span>{{ $aokhoac->getDisplayPriceOld()}}</span>
+          <h3 class="title"><a href="#">{{ $procate->name}}</a></h3>
+          <div class="price">{{ $procate->price}}
+            <span>{{ $procate->oldPrice}}</span>
           </div>
         </div>
         <ul class="social">
           <li>
-            <form action='{{ "/user/".$aokhoac ->id."/detail"}}' method="GET">
+            <form action='{{ "/user/".$procate ->id."/detail"}}' method="GET">
               <button  class="icon"><i class="fa fa-search" id="detail"></i></button>
             </form>  
           </li>
@@ -73,16 +79,14 @@
             </form> 
           </li>
           <li>
-            <form action='{{ "/user/".$aokhoac ->id."/cart"}}' method="GET">
+            <form action='{{ "/user/".$procate ->id."/cart"}}' method="GET">
               <button data-tip="Add to Cart" class="icon"><i class="fa fa-shopping-cart" id="cart"></i></button>
             </form>
           </li>
         </ul>
 
       </div>
-      @endif
       @endforeach
-
     </div>
   </div>
 

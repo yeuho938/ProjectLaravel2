@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +37,6 @@
             <th scope="col" width="100px">Số lượng</th>
             <th scope="col"> Mô tả</th>
             <th scope="col">Delete</th>
-            <th scope="col">Insert</th>
             <th scope="col">Edit</th>
           </tr>
         </thead>
@@ -58,12 +56,6 @@
                 @csrf 
                 @method("DELETE")                                                                                                                                                                                     
                 <button type="submit" name ="delete" style="margin-left: 30px; background: #ffcccc; font-size: 17px;"> Delete </button>      
-              </form>
-            </td>
-            <td>
-              <form action="/admin/clothes/create" method ="GET">  
-                @csrf           
-                <button type="submit" name ="delete" style="margin-left: 30px; background: #ffcccc; font-size: 17px;"> Insert </button>      
               </form>
             </td>
             <td>

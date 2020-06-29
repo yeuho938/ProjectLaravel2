@@ -29,8 +29,8 @@
        @method('PATCH')
        <div class="form-group">
         <label for="category" style="float: left; font-size: 18px;">Tên loại sản phẩm</label>
-        <input type="text" class="form-control" name ="category" placeholder="Category" value="{{$cateEdit->name}}"> 
-        @error('category')
+        <input type="text" class="form-control" name ="name" placeholder="Category" value="{{$cateEdit->name}}"> 
+        @error('name')
         <div class="alert alert-success">{{ $message }}</div>
         @enderror               
       </div>

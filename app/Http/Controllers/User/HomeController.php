@@ -18,18 +18,19 @@ class HomeController extends Controller
    return redirect()->route('home');
  }
 
- function aokhoac(){
-   $aokhoac = Product::all();
-   return view('user.category.aokhoac',[ "aokhoacs" => $aokhoac]);
- }
- function index(Request $request)
- {
+ function productCate($id){
+  $cate = Category::all();
+  $procate = DB::table('products')->where('category_id','=',$id)->get();
+  return view('user.category.displayProductCate',["productcategory" => $procate,"categories"=>$cate]);
+}
+function index(Request $request)
+{
   $category= Category::all();
   $page = $request->page;
-  $product = Product::all()->skip($page * 5)->take(5);
+  $product = Product::all()->skip($page * 5)->take(8);
   if($product->isEmpty())
   { 
-    $photos = Product::all()->take(5);
+    $photos = Product::all()->take(8);
     return redirect('/home/user/?page=0');
   }
   else if($page < 0)
