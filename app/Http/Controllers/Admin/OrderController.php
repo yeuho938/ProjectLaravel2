@@ -17,8 +17,17 @@ class OrderController extends Controller
 	function index(Request $request){
 		$category = Category::all();
 		$id_user = Auth::user()->id;
+
 		$carts = Cart::where('user_id',$id_user)->get();
 		$discount = Discount::where('name',$name)->get();
+		$total1 = 0;
+		$total =0;
+		foreach ($carts as $cart){
+			foreach ($cart->products as $product) {
+				$total1 = $total1+($cart->quantity * $product->price);
+			}
+		}
+        $total = $total + ($total1*($discount->percent))/100;
 
 		$name= $request ->name;
 		$phone= $request ->phone;
@@ -32,8 +41,11 @@ class OrderController extends Controller
 		$info->email =$email;
 		$info->address =$address;
 		$info->note = $note;
-		$info->description=$description;
-		$info->quantity=$quantity;
+		$info->code=$discount->name;
+		$info->percent=$discount->percent;
+		$info->total=$total;
+		$info->percent=$discount->percent;
+		$info->percent=$discount->percent;
 		$info->save();
 		
 		return view('admin.orders.order');
