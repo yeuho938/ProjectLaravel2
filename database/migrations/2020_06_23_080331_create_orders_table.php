@@ -16,7 +16,6 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
          $table->id();
          $table->unsignedBigInteger('user_id');
-         $table->unsignedBigInteger('product_id');
          $table->string('name');
          $table->string('phone');
          $table->string('email');
@@ -25,10 +24,10 @@ class CreateOrdersTable extends Migration
          $table->float('percent');
          $table->bigInteger('total');
          $table->string('note');
+         $table->string('detail');
          $table->string('status');
          $table->timestamps();
          $table->foreign('user_id')->references('id')->on('users');
-         $table->foreign('product_id')->references('id')->on('products');
      });
     }
 

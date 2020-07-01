@@ -32,6 +32,10 @@ Route::delete('/admin/users/{id}', 'Admin\UserController@destroy');
 
 Route::get('/home/user', 'User\HomeController@index')->name("home");
 Route::get('/user/{id}/detail', 'User\HomeController@detail');
+Route::get('/home/displayByDescPrice', 'User\HomeController@DescPrice');
+Route::get('/home/displayByAscPrice', 'User\HomeController@AscPrice');
+
+
 
 //CART
 
@@ -56,6 +60,8 @@ Route::delete('/admin/clothes/{id}', 'Admin\ClothesController@destroy');
 Route::get('/admin/clothes/{id}/edit', 'Admin\ClothesController@edit');
 Route::patch('/admin/clothes/{id}', 'Admin\ClothesController@update');
 
+
+
 // PARTIALS 
 // 
 Route::get('/partials/header','Admin\ClothesController@header');
@@ -73,4 +79,14 @@ Route::get('/home/productOfCate/{id}', 'User\HomeController@productCate');
 
 
 /// ORDER
-Route::post('/admin/order', 'Admin\OrderController@index');
+Route::get('/admin/order', 'Admin\OrderController@index');
+Route::post('/admin/order', 'Admin\OrderController@store');
+
+
+
+////DISCOUNT
+Route::get('/discount/index', 'Admin\DiscountController@index');
+Route::get('/discount/create', 'Admin\DiscountController@create');
+Route::delete('/discount/index/{id}', 'Admin\DiscountController@destroy');
+Route::post('/discount/store', 'Admin\DiscountController@store');
+

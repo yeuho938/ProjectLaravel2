@@ -9,9 +9,18 @@
       color: orange
     }
   </style>
+  <div class="container">
+    @if(session()->has('success'))
+    <a class="alert alert-danger">
+      {{ session()->get('success') }}
+    </a>
+    @endif
+  </div>
 </head>
 <body>
+
  @include('partials\header')
+
  <div class="container-fluid" >
   <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 80%">
     <ol class="carousel-indicators">
@@ -45,12 +54,13 @@
   </div>
 </div>
 <hr>
-<span style="display: flex;"><h2 style="color: red; margin-left: 30%;"> TẤT CẢ SẢN PHẨM</h2>  <h3 style=" margin-left: 40%;"> Sắp xếp theo</h3></span>
+<span style="display: flex;"><h2 style="color: red; margin-left: 30%;"> TẤT CẢ SẢN PHẨM</h2>  <h3 style=" margin-left: 40%;"> Sắp xếp theo <a href="/home/displayByDescPrice">Giảm dần</a> <a href="/home/displayByAscPrice">Tăng dần</a></h3></span>
 <div class="container" style="display: flex;">
   <div class="row" style="float: left;width: 30%; margin-left: -20%;padding:20px;margin-top: -20px">
     <div class="btrix_blockmenu">
       <ul>
         <li><a href="#">DANH MỤC SẢN PHẨM</a></li>
+        <?php $categories=Session::get('category');?>
         @foreach($categories as $cate)
         <li><a href="/home/productOfCate/{{$cate->id}}">{{$cate->name}}</a></li>
         @endforeach 
@@ -69,7 +79,7 @@
          <p style="border-radius:60%;position: absolute;height: 45px;width: 45px;margin-left: -50%;" class = "btn btn-danger"> 
           <?php  
           $giamgia = 0;
-          if($clothes->getDisplayPriceOld() > 0){
+          if($clothes->oldPrice> 0){
             $giamgia = 100-($clothes->price*100)/$clothes->oldPrice;
           }
           echo round($giamgia, 0, PHP_ROUND_HALF_UP)."%";

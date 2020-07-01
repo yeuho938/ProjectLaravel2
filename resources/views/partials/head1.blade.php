@@ -111,6 +111,7 @@
 						</li>
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="sp"> SẢN PHẨM<span class="caret"></span></a>
 							<ul class="dropdown-menu">
+								<?php $categories=Session::get('category');?>
 								@foreach($categories as $cate)
 								<li><a href="#">{{$cate->name}}</a></li>
 								@endforeach							

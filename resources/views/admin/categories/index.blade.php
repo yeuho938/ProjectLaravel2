@@ -14,10 +14,10 @@
 	</div>
 	<h3> List of Category</h3>
 	<div id="main">
-		<div class="container">
-			<h1 class="title-page">Xác định vị trí và các thành phần liên quan trong Tabs</h1>
+		<!-- <div class="container">
+			<h1 class="title-page"></h1>
 			<div class="group-tabs">
-				<!-- Nav tabs -->
+				 Nav tabs
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
 					<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
@@ -25,7 +25,7 @@
 					<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
 				</ul>
 
-				<!-- Tab panes -->
+				 Tab panes
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="home">This is Home content</div>
 					<div role="tabpanel" class="tab-pane" id="profile">This is Profile content</div>
@@ -34,7 +34,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="container">
 		<div class ="row">
 			<table class="table table-bordered">
@@ -53,7 +53,7 @@
 						<th scope="row"> {{$category->id}}</th>
 						<td>{{$category->name}}</td>
 						<td>
-							<a href='/category/create'> Edit</a>
+							<a href='/category/create'> Insert</a>
 						</td>						
 						<td>
 							<form action='{{"/category/".$category->id}}' method ="POST">

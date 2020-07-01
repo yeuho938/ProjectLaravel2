@@ -46,11 +46,7 @@
 							<td class="col-sm-8 col-md-6">
 								<div class="media">
 									<a class="thumbnail pull-left" href="#"> <img class="media-object" src="{{'/storage/'.$cart->image}}" style="width: 72px; height: 72px;"> </a>
-									<?php
-
-									$total = 0; 
-
-									?>
+									
 									<div class="media-body">
 										<h4 class="media-heading"><a href="#">{{$cart->name}}</a></h4>
 										<h5 class="media-heading"> by <a href="#">Brand name</a></h5>
@@ -97,6 +93,7 @@
 							<td class="text-right">
 								<h5><strong> 
 									<?php
+									$total=0;
 									foreach ($cartdata as $cart) {
 										$total = $total + ($cart->price * $cart->quantity);
 									}

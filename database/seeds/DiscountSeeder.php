@@ -13,11 +13,24 @@ class DiscountSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for($i = 0;$i < 10;$i++){
+        for($i = 0;$i < 5;$i++){
     		DB::table('discounts')->insert([
     			'name'=>$faker->name,  			
     			'percent'=>30,
     		]);
     	}
+
+            DB::table('discounts')->insert([
+                'name'=>"Yeu",           
+                'percent'=>50,
+            ]);
+       DB::table('discounts')->insert([
+                'name'=>"Laodai",           
+                'percent'=>70,
+            ]);
+        DB::table('discounts')->insert([
+                'name'=>"Yeuho",           
+                'percent'=>20,
+            ]);
     }
 }

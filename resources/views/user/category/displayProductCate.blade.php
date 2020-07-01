@@ -37,6 +37,7 @@
     <div class="btrix_blockmenu">
       <ul>
         <li><a href="#">DANH MỤC SẢN PHẨM</a></li>
+        <?php $categories=Session::get('category');?>
         @foreach($categories as $cate)
         <li><a href="/home/productOfCate/{{$cate->id}}">{{$cate->name}}</a></li>
         @endforeach 
@@ -51,7 +52,7 @@
           <p style="border-radius:60%;position: absolute;height: 45px;width: 45px;margin-left: -50%;" class = "btn btn-danger"> 
               <?php  
               $giamgia = 0;
-              if($procate->price > 0){
+              if($procate->oldPrice > 0){
                 $giamgia = 100-($procate->price*100)/$procate->oldPrice;
               }
               echo round($giamgia, 0, PHP_ROUND_HALF_UP)."%";

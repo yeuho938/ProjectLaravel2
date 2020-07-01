@@ -1,4 +1,4 @@
-	<?php
+<?php
 
 namespace App\Http\Controllers\Admin;
 
@@ -18,7 +18,7 @@ class ClothesController extends Controller
 		$categories = Category::all();
 		return view('partials.header',['categories'=>$categories]);
 	}
-	
+
 	function index(){
 		$categories = Category::all();
 		$product = Product::all();
@@ -53,8 +53,7 @@ class ClothesController extends Controller
 		$product->save();
 		return redirect('/admin/clothes');
 	}
-	public function destroy($id)
-	{   
+	public function destroy($id){   
 		$product = Product::find($id);
 		$product->delete();
 		return redirect('/admin/clothes');
@@ -73,15 +72,15 @@ class ClothesController extends Controller
 		$priceOld =$request->priceOld;
 		$description = $request->description;
 		$file = $request->file("image")->store("public");
+		$request->validate([   	
+			'name'=> 'required|max:255',
+			'price'=>'required',
+			'category_id'=>'required',
+			'description'=>'required',
+			'image'=>'required',
+			'quantity'=>'required',
+		]);
 
-		// $request->validate([   	
-		// 	'name'=> 'required|max:255',
-		// 	'price'=>'required',
-		// 	'category_id'=>'required',
-		// 	'description'=>'required',
-		// 	'image'=>'required',
-		// 	'quantity'=>'required',
-		// ]);
 
 		$product = Product::find($id);
 		$product->id = $id;
@@ -98,6 +97,6 @@ class ClothesController extends Controller
 		return redirect('/admin/clothes');
 
 	}
-	
-	
+
+
 }

@@ -7,6 +7,10 @@
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
+	<div>
+		@include('/partials/header')
+		@include('/partials/danhmuc')
+	</div>
 	<div class="container">
 		<div class ="row">
 			<table class="table table-bordered">
@@ -24,19 +28,23 @@
 						<th scope="col">Status</th>					
 					</tr>
 				</thead>
-				@foreach($categories as $category)
 				<tbody>
 					<tr>
-						<td>{{$clothes->category->name}}</td>
-						<td>{{$clothes->getDisplayPrice()}}</td>
-						<td>{{$clothes->getDisplayPriceOld()}}</td>
-						<td>{{$clothes->quantity}}</td>    
-						<td>{{$clothes->description}}</td> 
+						<td>{{$orders->name}}</td>
+						<td>{{$orders->phone}}</td>
+						<td>{{$orders->email}}</td>
+						<td>{{$orders->address}}</td>    
+						<td>{{$orders->code}}</td> 
+						<td>{{$orders->percent}}</td>
+						<td>{{$orders->total}}</td>
+						<td>{{$orders->note}}</td>
 					</tr>			
 				</tbody>
-				@endforeach
 			</table>
 		</div>
 	</div>
+	<div style="margin-top:30%; ">
+		@include('/partials/footer')
+	</div> 
 </body>
 </html>

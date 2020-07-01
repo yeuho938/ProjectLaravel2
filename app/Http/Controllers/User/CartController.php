@@ -50,10 +50,12 @@ class CartController extends Controller
 			->where('product_id', $id)
 			->where('user_id', $idUser)
 			->update(["quantity" => $quantity]);
-			return redirect()->route('home', ["carts" => "Thêm vào giỏ hàng Thành Công"]);
+			session()->flash('success', 'Thêm vào giỏ hàng Thành Công');
+			return redirect()->route('home');
 		} else {
 			DB::table('carts')->insert(["product_id" => $id, "quantity" => 1, "user_id" => $idUser]);
-			return redirect()->route('home', ["carts" => "Thêm vào giỏ hàng Thành Công"]);
+			return redirect()->route('home');
+			session()->flash('success', 'Thêm vào giỏ hàng Thành Công');
 		}
 		}
 		else{

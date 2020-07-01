@@ -6,6 +6,7 @@
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/home.css">
+	<link rel="stylesheet" type="text/css" href="/css/homedm.css">
 
 	<style type="text/css">
 		#boxdetail{
@@ -22,47 +23,61 @@
 </head>
 <body>
 	@include('\partials\header')
-	<center><h2 style="color: red"> DANH SÁCH TÌM KIẾM</h2></center>
-	<div class="container">
-		<div class="row" >
-			<div id="display">
-				@foreach($research as $search)
+	<span style="display: flex;"><h2 style="color: red; margin-left: 30%;"> Kết quả tìm kiếm cho từ khóa "{{$seach}} " </h2>  <h3 style=" margin-left: 40%;"> Sắp xếp theo <a href="/home/displayByDescPrice">Giảm dần</a> <a href="/home/displayByAscPrice">Tăng dần</a></h3></span>
+	<div class="container" style="display: flex;">
+		<div class="row" style="float: left;width: 30%; margin-left: -20%;padding:20px;margin-top: -20px">
+			<div class="btrix_blockmenu">
+				<ul>
+					<li><a href="#">DANH MỤC SẢN PHẨM</a></li>
+					<?php $categories=Session::get('category');?>
+					@foreach($categories as $cate)
+					<li><a href="/home/productOfCate/{{$cate->id}}">{{$cate->name}}</a></li>
+					@endforeach 
+					<li style="border: 1px solid grey"><a href="#">Sản phẩm mới</a>
+						<img src="/image/somi.jpg">
 
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row" style="float: right; margin-left: 35%;">
+			<div id="display">
+				@foreach($research as $clothes)
 				<div class="product-grid6">
-					<div class="product-image6">
+					<div class="product-image6" >
 						<p style="border-radius:60%;position: absolute;height: 45px;width: 45px;margin-left: -50%;" class = "btn btn-danger"> 
 							<?php  
 							$giamgia = 0;
-							if($search->getDisplayPriceOld() > 0){
-								$giamgia = 100-($search->price*100)/$search->oldPrice;
+							if($clothes->oldPrice> 0){
+								$giamgia = 100-($clothes->price*100)/$clothes->oldPrice;
 							}
 							echo round($giamgia, 0, PHP_ROUND_HALF_UP)."%";
 							?>
 						</p>
 						<a href="#">
-							<img class="pic-1" src="{{ '/storage/'.$search->image}}" width="250px" height="250px">
+							<img class="pic-1" src="{{'/storage/'.$clothes->image}}" width="250px" height="250px">
 						</a>
 					</div>
 					<div class="product-content">
-						<h3 class="title"><a href="#">{{ $search->name}}</a></h3>
-						<div class="price">{{ $search->price}}
-							<span>{{ $search->oldPrice}}</span>
+						<h3 class="title"><a href="#">{{ $clothes->name}}</a></h3>
+						<div class="price">{{ $clothes->getDisplayPrice()}}
+							<span>{{ $clothes->getDisplayPriceOld()}}</span>
 						</div>
 					</div>
 					<ul class="social">
 						<li>
-							<form action='{{ "/user/".$search ->id."/detail"}}' method="GET">
-								<button  class="icon"><i class="fa fa-search"></i></button>
+							<form action='{{ "/user/".$clothes ->id."/detail"}}' method="GET">
+								<button  class="icon"><i class="fa fa-search" id="detail"></i></button>
 							</form>  
 						</li>
 						<li>
 							<form action="/home/logout" method="GET">
-								<button data-tip="Add to Wishlist" class="icon"><i class="fa fa-shopping-bag"></i></button>
+								<button data-tip="Add to Wishlist" class="icon"><i class="fa fa-shopping-bag" id="tim"></i></button>
 							</form> 
 						</li>
 						<li>
-							<form action='{{ "/user/".$search ->id."/cart"}}' method="GET">
-								<button data-tip="Add to Cart" class="icon"><i class="fa fa-shopping-cart"></i></button>
+							<form action='{{ "/user/".$clothes ->id."/cart"}}' method="GET">
+								<button data-tip="Add to Cart" class="icon"><i class="fa fa-shopping-cart" id="cart"></i></button>
 							</form>
 						</li>
 					</ul>
@@ -72,7 +87,6 @@
 
 			</div>
 		</div>
-
 	</div>
 	<div class="container-fluid" style="margin-top: 10%; background-color: black">
 		@include('\partials\footer')

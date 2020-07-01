@@ -64,7 +64,7 @@
 				<i id="phone" class="fas fa-phone-volume"></i> <span class="chu" >Hotline: 035 446 7064</span>
 				<i id="email" class="fas fa-envelope"></i> <span class="chu" >Email: hothiyeu012345@gmail.com</span>	
 			</div>
-	
+
 			<div class="col-sm-7" style="padding-top: 20px">
 				<span style="display: inline-flex;">
 					<form class="navbar-form navbar-left" action="/home/search" method="post">
@@ -110,6 +110,7 @@
 						</li>
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="sp"> SẢN PHẨM<span class="caret"></span></a>
 							<ul class="dropdown-menu">
+								<?php $categories=Session::get('category');?>
 								@foreach($categories as $cate)
 								<li><a href="/home/productOfCate/{{$cate->id}}">{{ $cate->name }}</a></li>
 								@endforeach						

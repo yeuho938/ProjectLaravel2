@@ -96,7 +96,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<div style="margin-top: 40%;">
 		@include('/partials/footer')
 	</div> 

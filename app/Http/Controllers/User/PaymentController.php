@@ -16,10 +16,9 @@ class PaymentController extends Controller
 	function index(Request $request){
 		$category = Category::all();
 		$id_user = Auth::user()->id;
-		$name = $request->name;
+		$name = $request->namedis;
 		$discount = Discount::where('name',$name)->get();
 		$carts = Cart::where('user_id',$id_user)->get();
-		
 		return view('user.payment',['carts'=>$carts,'discounts'=>$discount]);
 	}
 	function edit(){
