@@ -16,8 +16,7 @@ class OrderController extends Controller
 {   
 	function index(Request $request){
 		$order = Order::all();	
-		$category = Category::all();	
-		return view('admin.orders.order',['orders'=>$order,'categories'=>$category]);
+		return view('admin.orders.order',['orders'=>$order]);
 	}
 	function store(Request $request){
 		$id_user = Auth::user()->id;
@@ -27,6 +26,7 @@ class OrderController extends Controller
 		$email= $request->email;
 		$address= $request->address;
 		$note= $request->note;
+
 		$discount = $request->namedis;
 
 		$code = Discount::where('name', $discount)->value('percent');
@@ -38,7 +38,6 @@ class OrderController extends Controller
 		foreach ($carts as $cart) {
 			$cart->products;
 		}
-
 
 		foreach($carts as $cart){
 			foreach ($cart->products as $product) {
@@ -69,12 +68,11 @@ class OrderController extends Controller
 		$info->note = $note;
 		$info->status = "f";
 		$info->code = "yeu";
-		$info->percent =30;
+		$info->percent =$code;
 		$info->total =  $total;
 		$info->detail = $dapro;
 		$info->save();
-		
-		return view('admin.orders.order',['orders'=>$info]);
+		return view('user.payment',['orders'=>$info]);
 	}
 }
 

@@ -40,7 +40,8 @@ function index(Request $request)
 { 
   $category= Category::all();
   $request->session()->put('category',$category);
-
+  $quanly = "QUẢN LÝ";
+  $request->session()->put('quanly',$quanly);
   $page = $request->page;
   $product = Product::all()->skip($page * 5)->take(8);
   if($product->isEmpty())
@@ -54,7 +55,7 @@ function index(Request $request)
     return redirect('/home/user/?page='.$totalPage);
   }
 
-  return view("user/home", [ "clothesdata" => $product,"page" => $page]);
+  return view("user/home", [ "clothesdata" => $product,"page" => $page,"quanly"=>$quanly]);
 }
 
 function search(Request $request)

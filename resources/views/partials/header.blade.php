@@ -32,6 +32,7 @@
 			font-family: bold;
 			font-size: 17px;
 		}
+		
 		#menu #tc:hover {
 			color: red
 		}
@@ -119,8 +120,14 @@
 						<li class="dropdown"><a href="Home/lienhe.php" id="lh"> LIÊN HỆ</a>								
 						</li>
 						<li class="dropdown"><a href="#" id="ht"> HỔ TRỢ</a>
-						</li>						
-						<li class="dropdown"><a href="/admin/dashboard" id="ht"> QUẢN LÝ</a>
+						</li>
+						<?php $quanly=Session::get('quanly');
+						 if(Auth::check()){
+						$user=Auth::user();
+						if($user->role ==1){
+							?>						
+							<li class="dropdown"><a href="/admin/dashboard" id="qly" >{{$quanly}}</a>
+							<?php }} ?>
 						</li>						
 					</ul>
 				</nav>

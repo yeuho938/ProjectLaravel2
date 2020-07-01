@@ -167,12 +167,9 @@
 				</form>
 			</div>				
 		</div>
-		<!-- Button trigger modal -->
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 			Launch demo modal
 		</button>
-
-		<!-- Modal -->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -183,7 +180,26 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						...
+						<p> Tên khách hàng: </p>
+						@foreach ($carts as $cart)
+						@foreach ($cart->products as $product)
+						<tr>
+							<td><img id="img_1" src="{{'/storage/'.$product->image}}" style="width: 40%"></td>
+							<td>{{$product->name}}</td>
+							<td id="gia1">{{$product->price}}</td>
+							<td id="sl1">{{$cart->quantity}}</td>
+							<td><a href="/user/cartindex">Edit</a></td>
+						</tr>
+						@endforeach
+						@endforeach
+
+						<?php 
+						$giamgia =0;
+						foreach($discounts as $pay){
+							$giamgia = ($giamgia + $pay->percent) ;
+						}
+						echo $giamgia." %";
+						?>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
