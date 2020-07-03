@@ -22,7 +22,15 @@
 	</style>
 </head>
 <body>
-	@include('\partials\header')
+	@if(Auth::user())
+	@if(Auth::user()->role==0)
+	@include('partials\header')
+	@else
+	@include('partials\head1')
+	@endif
+	@else
+	@include('partials\head1')
+	@endif
 	<span style="display: flex;"><h2 style="color: red; margin-left: 30%;"> Kết quả tìm kiếm cho từ khóa "{{$seach}} " </h2> </span>
 	<div class="container" style="display: flex;">
 		<div class="row" style="float: left;width: 30%; margin-left: -20%;padding:20px;margin-top: -20px">

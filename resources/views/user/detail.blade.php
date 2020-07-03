@@ -28,7 +28,15 @@
 	</style>
 </head>
 <body>
-	@include('\partials\header')
+	@if(Auth::user())
+	@if(Auth::user()->role==0)
+	@include('partials\header')
+	@else
+	@include('partials\head1')
+	@endif
+	@else
+	@include('partials\head1')
+	@endif
 	<h2> CHI TIẾT SẢN PHẨM</h2>
 	<div class="row" id="boxdetail">	
 		
@@ -43,10 +51,10 @@
 			<p>{{ $datadetail->description}}</p>
 			<hr>
 			<span id="cartq">
-			<input type="number" name="quantity" value="1" id="number"> &nbsp; &nbsp;&nbsp;
-			<form action='{{ "/user/".$datadetail ->id."/cart"}}' method="get">
-				<button> Giỏ hàng</button>
-			</form>   
+				<input type="number" name="quantity" value="1" id="number"> &nbsp; &nbsp;&nbsp;
+				<form action='{{ "/user/".$datadetail ->id."/cart"}}' method="get">
+					<button> Giỏ hàng</button>
+				</form>   
 			</span>            
 		</div>
 

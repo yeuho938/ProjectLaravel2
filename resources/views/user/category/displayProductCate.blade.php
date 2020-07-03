@@ -12,7 +12,15 @@
   </style>
 </head>
 <body>
+ @if(Auth::user())
+ @if(Auth::user()->role==0)
  @include('partials\header')
+ @else
+ @include('partials\head1')
+ @endif
+ @else
+ @include('partials\head1')
+ @endif
  <hr>
  <div class="container-fluid" id="menungang" >
   <div class="row" >
@@ -50,14 +58,14 @@
       <div class="product-grid6">
         <div class="product-image6">
           <p style="border-radius:60%;position: absolute;height: 45px;width: 45px;margin-left: -50%;" class = "btn btn-danger"> 
-              <?php  
-              $giamgia = 0;
-              if($procate->oldPrice > 0){
-                $giamgia = 100-($procate->price*100)/$procate->oldPrice;
-              }
-              echo round($giamgia, 0, PHP_ROUND_HALF_UP)."%";
-              ?>
-            </p>
+            <?php  
+            $giamgia = 0;
+            if($procate->oldPrice > 0){
+              $giamgia = 100-($procate->price*100)/$procate->oldPrice;
+            }
+            echo round($giamgia, 0, PHP_ROUND_HALF_UP)."%";
+            ?>
+          </p>
           <a href="#">
             <img class="pic-1" src="{{'/storage/'.$procate->image}}" width="250px" height="250px">
           </a>
