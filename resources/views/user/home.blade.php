@@ -28,7 +28,15 @@
     echo '<script type="text/javascript">alert("' . $_GET['addcart'] . '")</script>';
   }
   ?>
+  @if(Auth::user())
+  @if(Auth::user()->role==0)
   @include('partials\header')
+  @else
+  @include('partials\head1')
+  @endif
+  @else
+  @include('partials\head1')
+  @endif
   <div class="container-fluid" >
     <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 80%">
       <ol class="carousel-indicators">

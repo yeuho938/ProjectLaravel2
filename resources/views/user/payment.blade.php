@@ -137,7 +137,7 @@
 								<div class="col-6">
 									<input type="text" class="form-control" disabled id="tongtienn" 
 									value="<?php 
-									if($giamgia >0){
+									if($giamgia > 0){
 										echo ($giamgia* $total)/100 + $phi.' VND' ;
 										}else{
 											echo $total+$phi.' VND' ;

@@ -9,13 +9,11 @@ use App\Category;
 class DiscountController extends Controller
 {
     function index(){
-		$category = Category::all();
 		$discount = Discount::all();
-		return view('admin.discounts.index',['categories'=>$category,'discounts'=>$discount]);
+		return view('admin.discounts.index',['discounts'=>$discount]);
 	}
 	function create(){
-		$category = Category::all();
-		return view('admin.discounts.create',['categories'=>$category]);
+		return view('admin.discounts.create');
 	}
 	function store(Request $request){
 		$name = $request->name ;

@@ -11,12 +11,7 @@ Use App\Category;
 class ClothesController extends Controller
 {   
 	function create(){
-		$categories = Category::all();
-		return view('admin.clothes.create',['categories'=>$categories]);
-	}
-	function header(){
-		$categories = Category::all();
-		return view('partials.header',['categories'=>$categories]);
+		return view('admin.clothes.create');
 	}
 
 	function index(){
@@ -34,7 +29,7 @@ class ClothesController extends Controller
 		$file = $request->file("image")->store("public");
 
 		$request->validate([   	
-			'name'=> 'required|max:255',
+			'name'=> 'required|max:150',
 			'price'=>'required',
 			'category_id'=>'required',
 			'description'=>'required',

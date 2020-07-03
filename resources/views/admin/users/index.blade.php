@@ -10,7 +10,7 @@
 	
 </head>
 <body>
-	@include('/partials/header')
+	@include('/partials/head1')
 	@include('/partials/danhmuc')
 	<center>
 		<h3 style="color: red"> THÔNG TIN CỦA USERS</h3>
@@ -31,9 +31,6 @@
 						<th scope="col">Phone</th>
 						<th scope="col">Role</th>
 						<th scope="col">Delete</th>
-						<th scope="col">Insert</th>
-
-
 					</tr>
 				</thead>
 				@foreach($userdata as $user)
@@ -54,13 +51,6 @@
 								<button type="submit" name ="delete" style="margin-left: 30px; background: #ffcccc; font-size: 17px;"> Delete </button>      
 							</form>
 						</td>
-						<td>
-							<form action="/auth/register" method ="GET">	
-								@csrf 					
-								<button type="submit" name ="delete" style="margin-left: 30px; background: #ffcccc; font-size: 17px;"> Insert </button>      
-							</form>
-						</td>
-
 					</tr>			
 				</tbody>
 				@endforeach

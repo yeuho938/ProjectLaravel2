@@ -13,9 +13,8 @@ class UserController extends Controller
 {
 
 	function index(){
-		$cate = Category::all();
 		$users = User::all();
-		return view("admin.users.index", [ "userdata" => $users,"categories"=>$cate]);
+		return view("admin.users.index", [ "userdata" => $users]);
 	}
 	function store(Request $request){
 		$name = $request->input("fullname");

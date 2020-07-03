@@ -13,8 +13,8 @@ use App\Category;
 class LoginController extends Controller
 {
  function index()
- {    $cate = Category::all();
-   return view("auth.login",['categories'=>$cate]);
+ {    
+   return view("auth.login");
  }
  function login(Request $request)
  {

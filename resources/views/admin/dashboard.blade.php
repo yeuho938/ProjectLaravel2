@@ -18,7 +18,7 @@
 	</style>
 </head>
 <body>
-	@include('/partials/header') 
+	@include('/partials/head1') 
 	<div class="container-fluid">
 		<div class="row" id="menu">
 			<div id="viewport">

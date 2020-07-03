@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div>
-		@include('/partials/header')
+		@include('/partials/head1')
 		@include('/partials/danhmuc')
 	</div>
 	<div class="container">

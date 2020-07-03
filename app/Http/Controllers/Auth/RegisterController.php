@@ -11,12 +11,7 @@ use App\Category;
 class RegisterController extends Controller
 {
     function index(){
-         $cate = Category::all();
-    	return  view("auth.register",['categories'=>$cate]);
-    }
-    function header1(){
-        $categories = Category::all();
-        return view('partials.head1',['categories'=>$categories]);
+    	return  view("auth.register");
     }
     function register(Request $request){
     	$name = $request->fullname;
@@ -27,18 +22,18 @@ class RegisterController extends Controller
         $phone = $request->phone;
         $request->validate([ 
             'fullname'=>'required',      
-            'username'=> 'required|unique:users|max:255',
-            'email'=>'required|unique:users',
-            'phone'=>'required|max:9',
-            'password'=>'required',
+            'username'=> 'required|unique:users|max:50',
+            'email'=>'required|unique:users|min:15',
+            'phone'=>'required|max:10|min:10',
+            'password'=>'required|min:6',
             'address'=>'required',
         ]);
-    	$role = 0;
-    	$hashpassword = Hash::make($password);
+        $role = 0;
+        $hashpassword = Hash::make($password);
 
-    	DB::table('users')->insert(
-			["fullname"=>$name,"username" => $username, "password" => $hashpassword, "email" => $email,"address"=>$address,"phone"=>$phone,"role"=>$role]);   	
-    
-    return redirect("/auth/login");
-}
+        DB::table('users')->insert(
+         ["fullname"=>$name,"username" => $username, "password" => $hashpassword, "email" => $email,"address"=>$address,"phone"=>$phone,"role"=>$role]);   	
+
+        return redirect("/auth/login");
+    }
 }
