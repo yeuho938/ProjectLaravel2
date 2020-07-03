@@ -21,8 +21,10 @@
 	</style>
 </head>
 <body>
+	<div>
+		@include('/partials/header')
+	</div>
 	<div class="container-fluid">
-		<p>Đặt mua mẫu <strong class="text-danger"></strong></p>
 		<form action="/admin/order" name="frm" method="POST">
 			@csrf
 			<div class="row" id="thongtin">
@@ -166,47 +168,6 @@
 					<button class="col-3 btn btn-danger" style="height: 40px" type="submit">Áp dụng </button>
 				</form>
 			</div>				
-		</div>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-			Launch demo modal
-		</button>
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<p> Tên khách hàng: </p>
-						@foreach ($carts as $cart)
-						@foreach ($cart->products as $product)
-						<tr>
-							<td><img id="img_1" src="{{'/storage/'.$product->image}}" style="width: 40%"></td>
-							<td>{{$product->name}}</td>
-							<td id="gia1">{{$product->price}}</td>
-							<td id="sl1">{{$cart->quantity}}</td>
-							<td><a href="/user/cartindex">Edit</a></td>
-						</tr>
-						@endforeach
-						@endforeach
-
-						<?php 
-						$giamgia =0;
-						foreach($discounts as $pay){
-							$giamgia = ($giamgia + $pay->percent) ;
-						}
-						echo $giamgia." %";
-						?>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
-					</div>
-				</div>
-			</div>
 		</div>
 	</body>
 	</html>

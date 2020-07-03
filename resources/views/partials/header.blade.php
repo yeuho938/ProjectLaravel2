@@ -90,7 +90,7 @@
 							<button  class="icon" ><i class="fas fa-registered"></i>Đăng xuất</button>
 						</form>
 						@elseif(Auth::user()->role==1)
-						<button class="btn-success" style="height: 30px;margin-top:4%"><i class="fas fa-user-tag" data-toggle="modal"></i>{{Auth::user()->username}}</button>
+						<button class="btn-success" style="height: 30px;margin-top:5%"><i class="fas fa-user-tag" data-toggle="modal"></i>{{Auth::user()->username}}</button>
 						<form action="/home/logout" method="GET">
 							<button  class="icon" ><i class="fas fa-registered"></i>Đăng xuất</button>
 						</form>

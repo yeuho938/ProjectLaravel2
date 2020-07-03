@@ -13,6 +13,13 @@
       color: black;
       font-size: 16px;
     }
+    .dropdown a{
+      text-decoration: none;
+      color: black;
+    }
+    .dropdown-menu li a{
+      font-size: 16px
+    }
   </style>
 </head>
 <body>
@@ -58,9 +65,9 @@
   <div class="container-fluid" style="margin-bottom: 20px">
     <span style="display: flex;"><h2 style="color: red; margin-left: 30%;"> TẤT CẢ SẢN PHẨM</h2>
       <h3 style="float: right; margin-left:35%">
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="sp"> Sắp xếp theo giá<span class="caret"></span></a>
+        <li class="dropdown" style="list-style-type: none;"><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="sp"> Sắp xếp theo giá<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/home/displayByDescPrice">Giảm dần</a></li>
+            <li><a href="/home/displayByDescPrice">Giảm dần </a></li>
             <li><a href="/home/displayByAscPrice">Tăng dần</a></li>
           </ul>
         </li> 
@@ -77,10 +84,6 @@
           @foreach($categories as $cate)
           <li><a href="/home/productOfCate/{{$cate->id}}">{{$cate->name}}</a></li>
           @endforeach 
-          <li style="border: 1px solid grey"><a href="#">Sản phẩm mới</a>
-            <img src="/image/somi.jpg">
-
-          </li>
         </ul>
       </div>
     </div>

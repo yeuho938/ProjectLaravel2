@@ -22,7 +22,7 @@
   <center><h2> DANH SÁCH SẢN PHẨM</h2>
     <a href="/admin/clothes/create" class = "btn btn-success"> Thêm sản phẩm</a>
     <a href="/category/index" class = "btn btn-success"> Loại sản phẩm</a>
-     <a href="/discount/index" class = "btn btn-success">Sản phẩm giảm giá</a>
+     <a href="/discount/index" class = "btn btn-success"> Mã giảm giá</a>
   </center>
   <div class="container" style="margin-top: 1%;">
     <div class ="row">

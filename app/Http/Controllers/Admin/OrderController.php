@@ -32,6 +32,7 @@ class OrderController extends Controller
 		$percent = Discount::where('name', $discount)->value('percent');
 		$namecode = Discount::where('name', $discount)->value('name');
 		$total1=2;
+
 		$total = 0;
 		$phi = 20000;
 
@@ -73,6 +74,8 @@ class OrderController extends Controller
 		$info->total =  $total;
 		$info->detail = $dapro;
 		$info->save();
+
+		$cart = Cart::where('user_id',$id_user)->delete();
 	}
 }
 
