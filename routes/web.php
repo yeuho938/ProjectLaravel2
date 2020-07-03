@@ -35,8 +35,9 @@ Route::get('/user/{id}/detail', 'User\HomeController@detail');
 Route::get('/home/displayByDescPrice', 'User\HomeController@DescPrice');
 Route::get('/home/displayByAscPrice', 'User\HomeController@AscPrice');
 
+///USER
 
-
+Route::get('/user/infoUser', 'User\HomeController@infoUser');
 //CART
 
 Route::get('/user/cartindex', 'User\CartController@indexCart');

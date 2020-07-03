@@ -29,7 +29,8 @@ class OrderController extends Controller
 
 		$discount = $request->namedis;
 
-		$code = Discount::where('name', $discount)->value('percent');
+		$percent = Discount::where('name', $discount)->value('percent');
+		$namecode = Discount::where('name', $discount)->value('name');
 		$total1=2;
 		$total = 0;
 		$phi = 20000;
@@ -50,8 +51,8 @@ class OrderController extends Controller
 				);
 			}
 		}
-		if($code >0){
-			$total=$total +($code * $total1)/100 + $phi;
+		if($percent >0){
+			$total=$total +($percent * $total1)/100 + $phi;
 		}else{
 			$total=$total +$total1+ $phi;
 		}
@@ -67,12 +68,11 @@ class OrderController extends Controller
 		$info->address =$address;
 		$info->note = $note;
 		$info->status = "f";
-		$info->code = "yeu";
-		$info->percent =$code;
+		$info->code = $namecode;
+		$info->percent =$percent;
 		$info->total =  $total;
 		$info->detail = $dapro;
 		$info->save();
-		return view('user.payment',['orders'=>$info]);
 	}
 }
 

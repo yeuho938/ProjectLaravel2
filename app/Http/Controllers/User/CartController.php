@@ -32,31 +32,27 @@ class CartController extends Controller
 	}
 	function addCart($id) {
 		if(Auth::check()){
-			
-		$idUser = Auth::user()->id;
-
-		$check = DB::table('carts')
-		->where('product_id', $id)
-		->where('user_id', $idUser)
-		->count();
-
-		if ($check == 1) {
-			$quantity = DB::table('carts')
+			$idUser = Auth::user()->id;
+			$check = DB::table('carts')
 			->where('product_id', $id)
 			->where('user_id', $idUser)
-			->value('quantity') + 1;
+			->count();
 
-			DB::table('carts')
-			->where('product_id', $id)
-			->where('user_id', $idUser)
-			->update(["quantity" => $quantity]);
-			session()->flash('success', 'Thêm vào giỏ hàng Thành Công');
-			return redirect()->route('home');
-		} else {
-			DB::table('carts')->insert(["product_id" => $id, "quantity" => 1, "user_id" => $idUser]);
-			return redirect()->route('home');
-			session()->flash('success', 'Thêm vào giỏ hàng Thành Công');
-		}
+			if ($check == 1) {
+				$quantity = DB::table('carts')
+				->where('product_id', $id)
+				->where('user_id', $idUser)
+				->value('quantity') + 1;
+				DB::table('carts')
+				->where('product_id', $id)
+				->where('user_id', $idUser)
+				->update(["quantity" => $quantity]);
+				return redirect()->route('home',['addcart'=>'Thêm vào giỏ hàng thành công']);
+			} else {
+				DB::table('carts')->insert(["product_id" => $id, "quantity" => 1, "user_id" => $idUser]);
+				return redirect()->route('home',['addcart'=>'Thêm vào giỏ hàng thành công']);
+				
+			}
 		}
 		else{
 			return redirect("/auth/login");
@@ -88,4 +84,3 @@ class CartController extends Controller
 
 
 
- 

@@ -81,7 +81,16 @@
 					</form>
 					<span style="display: inline-flex;" id="lis">
 						@if(Auth::user())
-						<h3> Hi:{{Auth::user()->fullname}}</h3>
+						@if(Auth::user()->role==0)
+						<form action="/user/infoUser" method="GET">
+							<button class="btn-success" style="height: 30px;margin-top:18%"><i class="fas fa-user-tag" data-toggle="modal"></i>{{Auth::user()->fullname}}</button>
+							
+						</form>
+						<form action="/home/logout" method="GET">
+							<button  class="icon" ><i class="fas fa-registered"></i>Đăng xuất</button>
+						</form>
+						@elseif(Auth::user()->role==1)
+						<button class="btn-success" style="height: 30px;margin-top:4%"><i class="fas fa-user-tag" data-toggle="modal"></i>{{Auth::user()->username}}</button>
 						<form action="/home/logout" method="GET">
 							<button  class="icon" ><i class="fas fa-registered"></i>Đăng xuất</button>
 						</form>
@@ -92,47 +101,71 @@
 						<form action="/auth/login">
 							<button  class="icon"><i class="fas fa-sign-in-alt"></i>Đăng nhập</button>
 						</form>
-						@endif										
-						<a href="/user/cartindex"><button class="icon"><i class="fas fa-shopping-cart"></i><span>Giỏ Hàng</span></button></a>					
-					</span>
-				</div>													
+						@endif
+
+						@if(Session::has('totalQuantity')&& Auth::user()->role ==0)
+						<?php $quantity = Session::get('totalQuantity'); ?>										
+						<a href="/user/cartindex"><button class="icon">
+							<i class="fas fa-shopping-cart"></i><span>Giỏ Hàng
+								<sup style="color: red; font-size: 15px">( <?php echo $quantity; ?>)</sup></span>
+							</button></a>	
+							@else
+							<a href="/user/cartindex"><button class="icon">
+								<i class="fas fa-shopping-cart"></i><span>Giỏ Hàng</span>
+								<sup>(0)</sup>
+							</button></a>	
+							@endif
+							@else
+							<form action="/auth/register">
+								<button  class="icon"><i class="fas fa-sign-out-alt"></i>Đăng ký</button>
+							</form>
+							<form action="/auth/login">
+								<button  class="icon"><i class="fas fa-sign-in-alt"></i>Đăng nhập</button>
+							</form>
+							<a href="/user/cartindex"><button class="icon">
+								<i class="fas fa-shopping-cart"></i><span>Giỏ Hàng</span>
+							</button></a>
+							@endif			
+						</span>
+					</div>													
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="container-fluid" >
-		<div class="row" >
-			<center>
-				<nav class="navbar navbar-inverse" style="background-color: #CDC9C9">
-					<ul class="nav navbar-nav" id="menu">
-						
-						<li class="dropdown"><a href="/home/user" id="tc"> TRANG CHỦ </a>
-						</li>
-						<li class="dropdown"><a href="Home/gioithieu.php"> GIỚI THIỆU</a>
-						</li>
-						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="sp"> SẢN PHẨM<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<?php $categories=Session::get('category');?>
-								@foreach($categories as $cate)
-								<li><a href="/home/productOfCate/{{$cate->id}}">{{ $cate->name }}</a></li>
-								@endforeach						
+		<div class="container-fluid" >
+			<div class="row" >
+				<center>
+					<nav class="navbar navbar-inverse" style="background-color: #CDC9C9">
+						<ul class="nav navbar-nav" id="menu">
+
+							<li class="dropdown"><a href="/home/user" id="tc"> TRANG CHỦ </a>
+							</li>
+							<li class="dropdown"><a href="Home/gioithieu.php"> GIỚI THIỆU</a>
+							</li>
+							<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="sp"> SẢN PHẨM<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<?php $categories=Session::get('category');?>
+									@foreach($categories as $cate)
+									<li><a href="/home/productOfCate/{{$cate->id}}">{{ $cate->name }}</a></li>
+									@endforeach						
+								</ul>
+							</li>
+							<li class="dropdown"><a href="Home/lienhe.php" id="lh"> LIÊN HỆ</a>								
+							</li>
+							<li class="dropdown"><a href="#" id="ht"> HỔ TRỢ</a>
+							</li>
+							<?php $quanly=Session::get('quanly');
+							if(Auth::check()){
+								$user=Auth::user();
+								if($user->role ==1){
+									?>						
+									<li class="dropdown"><a href="/admin/dashboard" id="qly" >{{$quanly}}</a>
+									<?php }} ?>
+								</li>						
 							</ul>
-						</li>
-						<li class="dropdown"><a href="Home/lienhe.php" id="lh"> LIÊN HỆ</a>								
-						</li>
-						<li class="dropdown"><a href="#" id="ht"> HỔ TRỢ</a>
-						</li>
-						<?php $quanly=Session::get('quanly');
-						 if(Auth::check()){
-						$user=Auth::user();
-						if($user->role ==1){
-							?>						
-							<li class="dropdown"><a href="/admin/dashboard" id="qly" >{{$quanly}}</a>
-							<?php }} ?>
-						</li>						
-					</ul>
-				</nav>
-			</center>
-		</div>	
-	</div>
-</body>
-</html>
+						</nav>
+					</center>
+				</div>	
+			</div>
+		</body>
+		</html>
+

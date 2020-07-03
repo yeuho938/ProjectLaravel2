@@ -115,7 +115,7 @@
 							</div>
 							<div class="row" >
 								<div class="col-6"><p style="font-size: 17px">Giảm giá</p></div>
-								<div class="col-6"><p class="text-danger" id="giamgia" style="font-size: 17px">
+								<div class="col-6"><p class="text-danger" style="font-size: 17px">
 									<?php 
 									$giamgia =0;
 									foreach($discounts as $pay){
@@ -135,7 +135,7 @@
 								<div class="col-6">
 									<input type="text" class="form-control" disabled id="tongtienn" 
 									value="<?php 
-									if($giamgia>0){
+									if($giamgia >0){
 										echo ($giamgia* $total)/100 + $phi.' VND' ;
 										}else{
 											echo $total+$phi.' VND' ;

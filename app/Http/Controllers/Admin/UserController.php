@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\User; 
 use App\Category;
+use App\Order;
 class UserController extends Controller
 {
 
@@ -33,4 +35,5 @@ class UserController extends Controller
 		return redirect('admin/users');
 
 	}
+	
 }

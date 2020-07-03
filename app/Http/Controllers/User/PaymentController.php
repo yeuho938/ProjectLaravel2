@@ -14,7 +14,7 @@ use App\Discount;
 class PaymentController extends Controller
 {
 	function index(Request $request){
-		$category = Category::all();
+		
 		$id_user = Auth::user()->id;
 		$name = $request->namedis;
 		$discount = Discount::where('name',$name)->get();

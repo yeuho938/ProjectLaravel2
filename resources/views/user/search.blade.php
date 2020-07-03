@@ -23,7 +23,7 @@
 </head>
 <body>
 	@include('\partials\header')
-	<span style="display: flex;"><h2 style="color: red; margin-left: 30%;"> Kết quả tìm kiếm cho từ khóa "{{$seach}} " </h2>  <h3 style=" margin-left: 40%;"> Sắp xếp theo <a href="/home/displayByDescPrice">Giảm dần</a> <a href="/home/displayByAscPrice">Tăng dần</a></h3></span>
+	<span style="display: flex;"><h2 style="color: red; margin-left: 30%;"> Kết quả tìm kiếm cho từ khóa "{{$seach}} " </h2> </span>
 	<div class="container" style="display: flex;">
 		<div class="row" style="float: left;width: 30%; margin-left: -20%;padding:20px;margin-top: -20px">
 			<div class="btrix_blockmenu">
